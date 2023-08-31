@@ -1,10 +1,12 @@
 import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 
+import styles from "../App.module.css"
 const BuscaCep = () => {
 
     const [cep, setCep] = useState<string>("")
     const [localidade, setLocalidade] = useState<string>("")
     const [uf, setUf] = useState<string>("")
+    const [erro, setErro]  = useState<string>("")
 
     const findCep = (e: FormEvent) => {
         e.preventDefault();
@@ -18,8 +20,11 @@ const BuscaCep = () => {
                         setLocalidade(data.localidade);
                         setCep(data.cep);
                         setUf(data.uf);
+                        setErro("");
                     }
-                ).catch(error => {console.error("Erro:", error)});
+                ).catch(error => {
+                    setErro ("Pesquisa Inválida")
+                });
     }
 
     const submitForm = (e: ChangeEvent<HTMLInputElement>) => {
@@ -37,6 +42,7 @@ const BuscaCep = () => {
             <p>Cidade:{localidade} </p>
             <p>Estado:{uf} </p>
             <p>CEP: {cep}</p>
+            <p className={styles.error}>{erro}</p>
         </div>
     );
 }
