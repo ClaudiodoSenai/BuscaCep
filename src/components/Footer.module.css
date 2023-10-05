@@ -3,8 +3,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(125, 126, 223);
-    color:rgb(245, 5, 5);
+    background-color: rgb(9, 169, 28);
+    color:rgb(12, 0, 0);
+    position:fixed;
+    width:100%;
+    bottom: 0;
 }
 
 .footer span{
